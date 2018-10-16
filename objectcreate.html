@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Object create method</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+       // Object Created
+
+       const Client = {
+           getBalance: function() {
+            return `hello ${this.name} your balance is 
+            ${this.balance}`;              
+           },
+           withDraw: function(amount) {
+               return this.balance -= amount;
+           },
+           deposit: function(amount){
+               return this.balance += amount;
+           } 
+       }
+
+       // Create new object and give balance
+       const mary = Object.create(Client);
+       // ATTACH the properties
+       mary.name = 'Haben';
+       mary.balance = 1000;
+
+       console.log(mary);
+       console.log(mary.getBalance());
+
+
+       // withDraw
+       mary.withDraw(500);
+       console.log(mary.getBalance());
+
+       //Deposit some money
+       mary.deposit(1200);
+       console.log(mary.getBalance());
+       
+       // Another method
+       const haben = Object.create(Client, {
+           name: {value: 'Haben'},
+           balance: {value: 1000}
+       })
+
+       console.log(haben);
+    </script>   
+</body>
+
+</html>
